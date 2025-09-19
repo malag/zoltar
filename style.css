@@ -1,0 +1,75 @@
+/* style.css ACTUALIZADO CON AMBAS ANIMACIONES */
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #1a1a2e;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    overflow: hidden;
+}
+
+.zoltar-machine {
+    width: 350px;
+    background: #8B0000;
+    border: 10px solid #DAA520; /* Borde dorado estático */
+    border-radius: 15px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), inset 0 0 20px rgba(0, 0, 0, 0.4);
+    position: relative;
+}
+
+.light {
+    width: 10px;
+    height: 10px;
+    background-color: #555;
+    border-radius: 50%;
+    position: absolute;
+    border: 2px solid #fff;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    animation: flash 1.5s infinite alternate;
+}
+.light:nth-child(1) { top: 20px; left: 20px; }
+.light:nth-child(2) { top: 20px; right: 20px; }
+
+@keyframes flash {
+    0% { background-color: #ff0; box-shadow: 0 0 15px #ff0; }
+    100% { background-color: #555; box-shadow: 0 0 5px #000; }
+}
+
+
+/* --- 2. ANIMACIONES AL HACER CLIC --- */
+
+/* Animación de temblor */
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+    20%, 40%, 60%, 80% { transform: translateX(5px); }
+}
+
+/* Clase única que activa AMBAS animaciones */
+.zoltar-machine.is-predicting {
+    animation: click-flash-border 1s;
+}
+.shake {
+    animation: shake 0.5s ease-in-out;
+}
+/* NUEVA animación de borde al hacer clic */
+@keyframes click-flash-border {
+    0%, 100% { border-color: #DAA520; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+    50% { border-color: #fff; box-shadow: 0 10px 30px rgba(0,0,0,0.5), 0 0 40px #FFD700; }
+}
+/* --- RESTO DE ESTILOS (SIN CAMBIOS) --- */
+.zoltar-machine h2, .zoltar-machine img, .fortune-ticket, .fortune-ticket strong, button, button:hover, button:disabled {
+    /* (Aquí van el resto de los estilos que no han cambiado) */
+    /* Lo omito por brevedad, pero en tu archivo debe estar todo */
+}
+.zoltar-machine h2 { color: #FFD700; font-family: 'Cinzel', serif; letter-spacing: 3px; text-shadow: 2px 2px 5px #000; }
+.zoltar-machine img { width: 80%; border-radius: 50%; border: 5px solid #DAA520; margin-bottom: 20px; background-color: #000; }
+.fortune-ticket { background-color: #f8f0d8; border: 1px dashed #333; padding: 15px; margin: 0 auto 20px auto; min-height: 80px; display: flex; justify-content: center; align-items: center; font-style: italic; color: #333; border-radius: 5px; line-height: 1.5; }
+.fortune-ticket strong { display: block; margin-top: 10px; font-style: normal; }
+button { background-color: #FFD700; color: #8B0000; border: none; padding: 15px 30px; font-size: 18px; font-weight: bold; border-radius: 50px; cursor: pointer; transition: transform 0.2s, background-color 0.2s; box-shadow: 0 4px 10px rgba(0,0,0,0.3); }
+button:hover { transform: scale(1.05); background-color: #fbec5d; }
+button:disabled { background-color: #999; cursor: not-allowed; transform: scale(1); }
